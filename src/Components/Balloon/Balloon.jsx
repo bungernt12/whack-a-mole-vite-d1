@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./Balloon.css"
 
 const Balloon = ({id, color}) => {
-    const balloonWidth = 200;
+    const balloonWidth = 50;
     const balloonHeight = balloonWidth * 1.17;
-    const threadHeight = 50;
+    const threadHeight = balloonWidth / 4;
+    const [balloonPopping, setBalloonPopping] = useState(false)
+
+    function handleClick() {
+      setBalloonPopping(!balloonPopping);
+    }
   
     return (
-      <div className="balloon balloon--moiving" style={{color: color}}>
+      <div 
+        className={`balloon balloon--moving ${balloonPopping ? 'balloon--popping' : ''}`} 
+        style={{color: color}} 
+        onClick={handleClick}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
+          width={balloonWidth}
+          height={balloonHeight + threadHeight}
           viewBox={`0 0 ${balloonWidth} ${balloonHeight + threadHeight}`}
         >
           <defs>

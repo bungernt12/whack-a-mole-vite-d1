@@ -1,5 +1,5 @@
 .balloon--moving {
-    animation: balloon-moving 5s ease-in-out 1s infinite alternate;
+    animation: balloon-moving 1s ease-in-out 1s infinite alternate;
     transform-origin: 50% 300%;
   }
   
@@ -9,5 +9,27 @@
     }
     75% {
       transform: rotate(2deg);
+    }
+  }
+
+  .balloon--active {
+    translate: 0% 0%;
+    transform-origin: 50% 300%;
+  }
+  
+  .balloon--popping {
+    animation: balloon-popping 0.1s ease-in-out alternate;
+    transform-origin: 50% 75%;
+    translate: 0% 100%;
+  }
+  
+  @keyframes balloon-popping {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(5);
+      opacity: 0;
+      visibility: hidden;
     }
   }
